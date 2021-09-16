@@ -8,6 +8,7 @@ public class ProductOrganizer{
     // } 
     //hey how are you im fine thank you
     // hello hello -kareze
+    // hi - miguel
 
     //algorithms insider here
     
