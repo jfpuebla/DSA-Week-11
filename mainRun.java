@@ -1,7 +1,8 @@
 public class mainRun {
-    public void main (String[] args){
+    public static void main (String[] args){
         //Insert here the main flow of our program 
-
+        ProductOrganizer.introMessage();
+        ProductOrganizer.askInput();
     }
 
 }
