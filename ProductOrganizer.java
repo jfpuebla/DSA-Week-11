@@ -1,13 +1,80 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class ProductOrganizer{
     //Insert here the methods only for our class
 
 
-    //try and catch method
-    // public static checkInput(){
+    //seperate method for the category
+    public static String categoryInput(){
+        //input category
+        Scanner input =new Scanner(System.in);
 
-    // }
+        //final category for the user
+        String finalCategory="";
+
+        while (true){
+
+            System.out.println("Here are the corresponding Categories with its shortcut key");
+            System.out.println("If you want to quit category input, just type 'quit'");
+            System.out.println(
+            "Frozen Foods--FF\nDrinks--Dr\nCleaning Supplies--CS\n"+
+            "Fruites n Veggies--FV\nCooking Foods--CF\nGeneral Foods--GF\nHealth n Beauty--HB\n"+
+            "Pharmacy--Ph\nOthers--Ot\n");
+
+            //list for the categories shortcut key
+            ArrayList<String> categoryArr = new ArrayList<>( Arrays.asList("ff","dr","cs","fv","cf",
+            "gf","hb","ph","ot","quit"));
+
+            System.out.print("Enter your category here: ");//category input
+            String categoryChoice=input.nextLine();
+            categoryChoice=categoryChoice.toLowerCase();
+
+            //checks if the user's choice is a shortcut key for the categories
+            if (categoryArr.contains(categoryChoice)){
+
+                //similar to else if but in organized manner
+                switch (categoryChoice){
+                    case "ff":
+                        finalCategory="Frozen Foods";
+                        break;
+                    case "dr":
+                        finalCategory="Drinks";
+                        break;
+                    case "cs":
+                        finalCategory="Cleaning Supplies";
+                        break;
+                    case "fv":
+                        finalCategory="Fruits n Veggies";
+                        break;
+                    case "cf":
+                        finalCategory="Cooking Foods";
+                        break;
+                    case "gf":
+                        finalCategory="General Food";
+                        break;
+                    case "hb":
+                        finalCategory="Health and Beauty";
+                        break;
+                    case "ph":
+                        finalCategory="Pharmacy";
+                        break;
+                    case "ot":
+                        finalCategory="Others";
+                        break;
+                    case "quit":
+                        finalCategory="null";
+                        break;
+
+                }
+
+            }else{
+                System.out.println("Please try again...\n");
+                continue;
+            } 
+
+            return finalCategory;
+        }
+    }
 
     //welcome messages and some instructions
     public static void introMessage(){
@@ -23,7 +90,11 @@ public class ProductOrganizer{
 
     //returns the user's product type (Category,price,name)
     public static void askInput(){
+        //to check the rerun of product
+        boolean proceed=false;
 
+        String productName=""; float price=0;
+        
         while (true){
 
             System.out.println("\nEnter here your product Name, Price , and Category");
@@ -31,18 +102,33 @@ public class ProductOrganizer{
             Scanner input =new Scanner(System.in);//sets input
 
             //input product name of the product 
-            System.out.print("Input the NAME of your product: ");
-            String productName= input.nextLine();
+            if (proceed==false){
+                System.out.print("Input the NAME of your product: ");
+                productName= input.nextLine();
+                //sets to true to avoid rerun if price input is wrong
+                proceed=true;
+            }
 
             //checking if the price is a number
             try{
                 System.out.print("Input the PRICE of your product: ");
-                float price= input.nextFloat();
+                price= input.nextFloat();
             }
             catch(Exception e){
-                System.out.println("\nYour input is wrong please try again");
+                System.out.println("\nYour input is wrong please try again\n");
                 continue;
             } 
+
+            //if user quits the category input loop, restarts the product inputs all over again
+            String productCategory=categoryInput();
+            if (productCategory=="null"){// if user quits, restarts all input
+                System.out.println("Restarting the program...");
+                System.out.println("...........................\n");
+                proceed=false;//set to false to rerun the product name
+                continue;
+            }
+
+            System.out.println("this is the answer of user"+productCategory+productName+price);
 
             break;
 
