@@ -21,6 +21,7 @@ public class ProductOrganizer{
             "Fruites n Veggies--FV\nCooking Foods--CF\nGeneral Foods--GF\nHealth n Beauty--HB\n"+
             "Pharmacy--Ph\nOthers--Ot\n");
 
+
             //list for the categories shortcut key
             ArrayList<String> categoryArr = new ArrayList<>( Arrays.asList("ff","dr","cs","fv","cf",
             "gf","hb","ph","ot","quit"));
@@ -90,7 +91,7 @@ public class ProductOrganizer{
 
     //returns the user's product type (Category,price,name)
     public static void askInput(){
-        //to check the rerun of product
+        //to check the rerun of product name
         boolean proceed=false;
 
         String productName=""; float price=0;
@@ -99,13 +100,24 @@ public class ProductOrganizer{
 
             System.out.println("\nEnter here your product Name, Price , and Category");
             System.out.println("To choose Category, just type the its corresponding value:");
+            System.out.println("Type 'STOP' if you want to stop adding products");
             Scanner input =new Scanner(System.in);//sets input
+
 
             //input product name of the product 
             if (proceed==false){
                 System.out.print("Input the NAME of your product: ");
                 productName= input.nextLine();
-                //sets to true to avoid rerun if price input is wrong
+
+                
+                if (productName=="STOP"){
+                    System.out.println("You are now quitting the program");
+                    break;
+                }else {
+                    System.out.println(productName +"is my name");
+                    System.out.println("wowowow");
+                }
+                // sets to true to avoid rerun if price input is wrong
                 proceed=true;
             }
 
@@ -129,8 +141,9 @@ public class ProductOrganizer{
             }
 
             System.out.println("this is the answer of user"+productCategory+productName+price);
+            //to go back again to naming input
+            proceed=false;
 
-            break;
 
         }
 
