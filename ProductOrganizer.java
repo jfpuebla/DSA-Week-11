@@ -95,28 +95,45 @@ public class ProductOrganizer{
         boolean proceed=false;
 
         String productName=""; float price=0;
+        int something=0;
         
         while (true){
 
             System.out.println("\nEnter here your product Name, Price , and Category");
             System.out.println("To choose Category, just type the its corresponding value:");
-            System.out.println("Type 'STOP' if you want to stop adding products");
+            System.out.println("Type '0' if you want to STOP adding products");
             Scanner input =new Scanner(System.in);//sets input
 
 
             //input product name of the product 
             if (proceed==false){
+
                 System.out.print("Input the NAME of your product: ");
                 productName= input.nextLine();
 
-                
-                if (productName=="STOP"){
-                    System.out.println("You are now quitting the program");
-                    break;
-                }else {
-                    System.out.println(productName +"is my name");
-                    System.out.println("wowowow");
+                //checks if user types 0
+                try{
+                    something=Integer.parseInt(productName);
+                    System.out.println("success for exiting");
+                    //if user types 0, the program will quit
+                    if (something==0){
+                        System.out.println("You are now quitting the program");
+                        break;
+
+                    //if user types other number, the program will restart
+                    } else if (something!=0){
+                        System.out.println("noooo");
+                        continue;
+                    }
+                //if user type a string not a number, saves the product name
+                }catch(Exception e){
+                    System.out.println("You are so kapoy");
                 }
+
+                
+                System.out.println(productName +"is my name");
+                System.out.println("wowowow");
+
                 // sets to true to avoid rerun if price input is wrong
                 proceed=true;
             }
