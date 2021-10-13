@@ -103,7 +103,7 @@ public class ProductOrganizer{
             System.out.println("To choose Category, just type the its corresponding value:");
             System.out.println("Type '0' if you want to STOP adding products");
             Scanner input =new Scanner(System.in);//sets input
-
+            //wow test
 
             //input product name of the product 
             if (proceed==false){
@@ -161,10 +161,8 @@ public class ProductOrganizer{
             //to go back again to naming input
             proceed=false;
 
-
         }
 
-        
     }
 
 
