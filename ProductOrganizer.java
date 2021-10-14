@@ -2,6 +2,13 @@ import java.util.*;
 
 public class ProductOrganizer{
     //Insert here the methods only for our class
+    
+    //A list within a list for the products
+    //List of ALL products with their corresponding price and category
+    static ArrayList<ArrayList<String>> allProductList= new ArrayList<ArrayList<String>>();
+
+    // EACH product with price and category formed inside a list
+    static ArrayList<String> eachProductList= new ArrayList<String>();
 
 
     //seperate method for the category
@@ -103,7 +110,7 @@ public class ProductOrganizer{
             System.out.println("To choose Category, just type the its corresponding value:");
             System.out.println("Type '0' if you want to STOP adding products");
             Scanner input =new Scanner(System.in);//sets input
-            //wow test
+
 
             //input product name of the product 
             if (proceed==false){
@@ -157,7 +164,23 @@ public class ProductOrganizer{
                 continue;
             }
 
-            System.out.println("this is the answer of user"+productCategory+productName+price);
+            //adds the product name , price and product category in the eachProductList
+            // this is the format -- [Product Name, Price(String form), Product Category] 
+            eachProductList.add(productName);
+            eachProductList.add(String.valueOf(price));//converts from int to string for the list
+            eachProductList.add(productCategory);
+       
+            // System.out.println(eachProductList);
+
+            //FORMAT for allProductList -- a list within a list 
+            // [ [name1,price1,category 1], [name2,price2,category 2]...]
+            allProductList.add(eachProductList);//adds the product list to the overall lists
+
+            // System.out.println(allProductList);
+            
+            //setting a new list for th eachProduct List(removes previous elements)
+            eachProductList= new ArrayList<String>();
+
             //to go back again to naming input
             proceed=false;
 
