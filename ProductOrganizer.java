@@ -2,7 +2,7 @@ import java.util.*;
 
 public class ProductOrganizer{
     //Insert here the methods only for our class
-    
+
     //A list within a list for the products
     //List of ALL products with their corresponding price and category
     static ArrayList<ArrayList<String>> allProductList= new ArrayList<ArrayList<String>>();
@@ -187,9 +187,14 @@ public class ProductOrganizer{
         }
 
     }
+    // two kinds of list
+    // eachProductList- [productname, price, category]
 
+    // allProductList - [[name1, price1, category1],[name2,price2,c1].....]
 
-
+    // a list within a list
+    // list[1][1]--python
+    // list.get(1).get(1)-java
 
 // //------------------------------------------------------------------------------------
 //     //PRICE METHODS BELOW
@@ -213,14 +218,47 @@ public class ProductOrganizer{
 //     //ALPHABETICAL NAMES METHODS BELOW
 
 //     //ascending of name sort from A to Z
-//     public static ascNameSort(){
+    public static void ascNameSort(){
+        
+        int i,j;
+        String temp="";
+        //[[name1,price1,category1],[name2,price2,catgory2]]
+        //a list within a list
+        //list.get(index).get(index) === list[index][index]
+        for (int i =0; i < names; i++) {            
+            for (int j = i +1; j < n; j++) {                               
+                 // to compare one string with other strings                
+                 if (names[i].compareTo(names[j]) >0) {                    
+                     // swapping                    
+                     temp = names[i];                    
+                     names[i] = names[j];                    
+                     names[j] = temp;                
+                    }          
+                }
+            }
+                    // wow.get(j)=wow.get(j+1);
 
-//     }
+                    allProductList[j+1]=temp;
 
+        }
+        // for (i=0;i<allProductList.size()-1;i++){//first overall iteration
+        //     for (j=0;j<allProductList.size()-1-i;j++){//where the changing of big num to small num happens
+
+        //         if(allProductList.get(j).get(0) >= allProductList.get(j+1).get(0)){
+        //             System.out.println("yoko na school");
+
+        //             temp=allProductList[j][0];
+
+        //             allProductList[j]=allProductList[j+1];
+
+        //             allProductList[j+1]=temp;
+
+    //             }
+    //         }
+    //         // System.out.println("iteration"+Arrays.toString(allProductList));
+    //     }
+    // }
 //     //descending of name sort from Z to A
-//     public static desNameSort(){
-
-//     }
 // //-------------------------------------------------------------------------------------------
 //     //deletes the product
 //     public static deleteProduct(){
@@ -241,4 +279,6 @@ public class ProductOrganizer{
 
     //algorithms insider here
     
+
+    }
 }

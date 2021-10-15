@@ -3,6 +3,7 @@ public class mainRun {
         //Insert here the main flow of our program 
         ProductOrganizer.introMessage();
         ProductOrganizer.askInput();
+        ProductOrganizer.ascNameSort();
     }
 
 }
