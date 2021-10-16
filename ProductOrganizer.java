@@ -287,46 +287,46 @@ public class ProductOrganizer{
 //     //ALPHABETICAL NAMES METHODS BELOW
 
 //     //ascending of name sort from A to Z
-    public static void ascNameSort(){
-        
-        int i,j;
-        String temp="";
-        //[[name1,price1,category1],[name2,price2,catgory2]]
-        //a list within a list
-        //list.get(index).get(index) === list[index][index]
-        for (int i =0; i < names; i++) {            
-            for (int j = i +1; j < n; j++) {                               
-                 // to compare one string with other strings                
-                 if (names[i].compareTo(names[j]) >0) {                    
-                     // swapping                    
-                     temp = names[i];                    
-                     names[i] = names[j];                    
-                     names[j] = temp;                
-                    }          
+    public static void ascNameSort(String allProductList[]){
+        for (int i = 0 ; i < allProductList.length - 1 ; i++)
+        {
+            for (int a = 0 ; a < allProductList.length - 1 - i ; a++)
+            {
+
+                int len1 = allProductList [a].length ();
+                int len2 = allProductList [a + 1].length ();
+
+                int min = 1; 
+
+                if (len1 > len2)
+                {
+                    min = len2;
                 }
+                else
+                {
+                    min = len1;
+                }
+
+                for (int b = 0 ; b < min ; b++)
+                {
+
+                    if ((int) allProductList [a].toLowerCase ().charAt (b) > (int) allProductList [a + 1].toLowerCase ().charAt (b))
+                    {
+                        String tempName = allProductList [a];
+
+                        
+                        allProductList [a] = allProductList [a + 1];
+                        allProductList [a + 1] = tempName;
+
+                        break;
+                    }
+
+                }
+
             }
-                    // wow.get(j)=wow.get(j+1);
-
-                    allProductList[j+1]=temp;
-
         }
-        // for (i=0;i<allProductList.size()-1;i++){//first overall iteration
-        //     for (j=0;j<allProductList.size()-1-i;j++){//where the changing of big num to small num happens
-
-        //         if(allProductList.get(j).get(0) >= allProductList.get(j+1).get(0)){
-        //             System.out.println("yoko na school");
-
-        //             temp=allProductList[j][0];
-
-        //             allProductList[j]=allProductList[j+1];
-
-        //             allProductList[j+1]=temp;
-
-    //             }
-    //         }
-    //         // System.out.println("iteration"+Arrays.toString(allProductList));
-    //     }
-    // }
+    }
+}
 //     //descending of name sort from Z to A
 // //-------------------------------------------------------------------------------------------
 //     //deletes the product
@@ -349,5 +349,4 @@ public class ProductOrganizer{
     //algorithms insider here
     
 
-    }
-}
+    
