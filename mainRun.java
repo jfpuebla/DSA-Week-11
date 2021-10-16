@@ -3,7 +3,10 @@ public class mainRun {
         //Insert here the main flow of our program 
         ProductOrganizer.introMessage();
         ProductOrganizer.askInput();
-        ProductOrganizer.ascNameSort();
+        System.out.println(ProductOrganizer.eachProductList[productName]);
+
+        ProductOrganizer.ascNameSortPrint();
+        ProductOrganizer.descNameSortPrint();
     }
 
 }

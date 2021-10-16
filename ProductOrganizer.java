@@ -213,6 +213,75 @@ public class ProductOrganizer{
 //     public static sortCategory(){
 
 //     }
+// //-----------------------------------------------------------------------------------------
+//     //ALPHABETICAL NAMES METHODS BELOW (QuickSort)
+
+//     //ascending of name sort from A to Z
+        public static void ascNameSort(int lowerIndex, int higherIndex) {
+            int i = lowerIndex;
+            int j = higherIndex;
+            String pivot = allProductList.get(lowerIndex + (higherIndex - lowerIndex) / 2).get(0);
+
+            while (i <= j) {
+                while (allProductList.get(i).get(0).compareToIgnoreCase(pivot) < 0 ) {
+                    i++;
+                }
+                while (allProductList.get(j).get(0).compareToIgnoreCase(pivot) > 0) {
+                    j--;
+                }
+                if (i <= j) {
+                    Collections.swap(allProductList, i, j);
+                    i++;
+                    j--;
+                }
+            }
+            if (lowerIndex < j) {
+                ascNameSort(lowerIndex, j);
+            }
+            if (i < higherIndex) {
+                ascNameSort(i, higherIndex);
+            }  
+        }
+        public static void ascNameSortPrint() {
+            int len = allProductList.size();
+            ascNameSort(0, len - 1);
+            System.out.println(allProductList);         
+        }
+
+        //     //descending of name sort from Z to A
+
+        public static void descNameSort(int lowerIndex, int higherIndex) {
+            int i = lowerIndex;
+            int j = higherIndex;
+            String pivot = allProductList.get(lowerIndex + (higherIndex - lowerIndex) / 2).get(0);
+
+            while (i <= j) {
+                while (allProductList.get(i).get(0).compareToIgnoreCase(pivot) > 0 ) {
+                    i++;
+                }
+                while (allProductList.get(j).get(0).compareToIgnoreCase(pivot) < 0) {
+                    j--;
+                }
+                if (i <= j) {
+                    Collections.swap(allProductList, i, j);
+                    i++;
+                    j--;
+                }
+            }
+            if (lowerIndex < j) {
+                descNameSort(lowerIndex, j);
+            }
+            if (i < higherIndex) {
+                descNameSort(i, higherIndex);
+            }  
+        }
+        public static void descNameSortPrint() {
+            int len = allProductList.size();
+            descNameSort(0, len - 1);
+            System.out.println(allProductList);         
+        }
+
+// //-------------------------------------------------------------------------------------------
 
 // //-----------------------------------------------------------------------------------------
 //     //ALPHABETICAL NAMES METHODS BELOW
