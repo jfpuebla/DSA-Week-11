@@ -211,7 +211,51 @@ public class ProductOrganizer{
 // //-------------------------------------------------------------------------------------
 //     //returns the category in alphabetical order (A to Z NOT Z to A para speed code hihi)
 //     public static sortCategory(){
+        public static void sortCategory(int lowerIndex, int higherIndex) {
+            int i = lowerIndex;
+            int j = higherIndex;
+            String pivot = allProductList.get(lowerIndex + (higherIndex - lowerIndex) / 2).get(2);
 
+            while (i <= j) {
+                while (allProductList.get(i).get(2).compareToIgnoreCase(pivot) < 0 ) {
+                    i++;
+                }
+                while (allProductList.get(j).get(2).compareToIgnoreCase(pivot) > 0) {
+                    j--;
+                }
+                if (i <= j) {
+                    Collections.swap(allProductList, i, j);
+                    i++;
+                    j--;
+                }
+            }
+            if (lowerIndex < j) {
+                sortCategory(lowerIndex, j);
+            }
+            if (i < higherIndex) {
+                sortCategory(i, higherIndex);
+            }  
+        }
+
+        public static void sortCategoryPrint() {
+            int len = allProductList.size();
+            sortCategory(0, len - 1);
+            for (int a = 0 ; a < allProductList.size() ; a ++) {
+                String cat = allProductList.get(a).get(2);
+                try {
+                    if (cat != allProductList.get(a-1).get(2)) {
+                        System.out.println("\n" + cat + ": \n");
+                        System.out.println(allProductList.get(a));
+                    } else {
+                        System.out.println(allProductList.get(a));
+                    }         
+                } catch (Exception e) {
+                    System.out.println("--- BY CATEGORY -- \n" + cat + ": \n");
+                }
+            }          
+        }
+
+   
 //     }
 // //-----------------------------------------------------------------------------------------
 //     //ALPHABETICAL NAMES METHODS BELOW (QuickSort)
@@ -245,7 +289,7 @@ public class ProductOrganizer{
         public static void ascNameSortPrint() {
             int len = allProductList.size();
             ascNameSort(0, len - 1);
-            System.out.println(allProductList);         
+            System.out.println("\n --- NAME SORT: ASCENDING --- \n" +allProductList);         
         }
 
         //     //descending of name sort from Z to A
@@ -278,8 +322,8 @@ public class ProductOrganizer{
         public static void descNameSortPrint() {
             int len = allProductList.size();
             descNameSort(0, len - 1);
-            System.out.println(allProductList);         
-        }
+            System.out.println("\n --- NAME SORT: DESCENDING --- \n" + allProductList);         
+        }}
 
 // //-------------------------------------------------------------------------------------------
 
@@ -287,46 +331,46 @@ public class ProductOrganizer{
 //     //ALPHABETICAL NAMES METHODS BELOW
 
 //     //ascending of name sort from A to Z
-    public static void ascNameSort(String allProductList[]){
-        for (int i = 0 ; i < allProductList.length - 1 ; i++)
-        {
-            for (int a = 0 ; a < allProductList.length - 1 - i ; a++)
-            {
+//     public static void ascNameSort(String allProductList[]){
+//         for (int i = 0 ; i < allProductList.length - 1 ; i++)
+//         {
+//             for (int a = 0 ; a < allProductList.length - 1 - i ; a++)
+//             {
 
-                int len1 = allProductList [a].length ();
-                int len2 = allProductList [a + 1].length ();
+//                 int len1 = allProductList [a].length ();
+//                 int len2 = allProductList [a + 1].length ();
 
-                int min = 1; 
+//                 int min = 1; 
 
-                if (len1 > len2)
-                {
-                    min = len2;
-                }
-                else
-                {
-                    min = len1;
-                }
+//                 if (len1 > len2)
+//                 {
+//                     min = len2;
+//                 }
+//                 else
+//                 {
+//                     min = len1;
+//                 }
 
-                for (int b = 0 ; b < min ; b++)
-                {
+//                 for (int b = 0 ; b < min ; b++)
+//                 {
 
-                    if ((int) allProductList [a].toLowerCase ().charAt (b) > (int) allProductList [a + 1].toLowerCase ().charAt (b))
-                    {
-                        String tempName = allProductList [a];
+//                     if ((int) allProductList [a].toLowerCase ().charAt (b) > (int) allProductList [a + 1].toLowerCase ().charAt (b))
+//                     {
+//                         String tempName = allProductList [a];
 
                         
-                        allProductList [a] = allProductList [a + 1];
-                        allProductList [a + 1] = tempName;
+//                         allProductList [a] = allProductList [a + 1];
+//                         allProductList [a + 1] = tempName;
 
-                        break;
-                    }
+//                         break;
+//                     }
 
-                }
+//                 }
 
-            }
-        }
-    }
-}
+//             }
+//         }
+//     }
+// }
 //     //descending of name sort from Z to A
 // //-------------------------------------------------------------------------------------------
 //     //deletes the product
