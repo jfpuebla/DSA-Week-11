@@ -200,14 +200,49 @@ public class ProductOrganizer{
 //     //PRICE METHODS BELOW
 
 //     //returns the sorted price in ASCENDING order
-//     public static ascPriceSort(){
-
-//     }
+        public static void ascPriceSort(int price){
+            int a;
+            int b;
+            int temp;
+            int arr1[] = new int[price];
+            for(a = 0; a<price; a++) 
+				for(a=0; a<(price-1); a++) {
+					for(b=0; b<price-a-1; b++) {	
+						if(arr1[b] > arr1[b+1]) 
+							{
+							temp = arr1[b];
+							arr1[b]= arr1[b+1];
+							arr1[b+1] = temp;
+							}
+						}
+                    }
+                    System.out.println("Ascending price list: ");
+		                for (a=0; a<price; a++) 
+			                System.out.println(arr1[a]);
+            }
 
 //     //returns the sorted price in DESCENDING order
-//     public static desPriceSort(){
-
-//     }
+        public static void desPriceSort(int price){
+            int a;
+            int b;
+            int temp;
+            int arr2[] = new int[price];
+            for(a = 0; a<price; a++) 
+			    for(a=0; a<(price-1); a++) {
+					for(b=0; b<price-a-1; b++) {	
+						if(arr2[b] < arr2[b+1]) 
+						    {
+							temp = arr2[b];
+							arr2[b]= arr2[b+1];
+							arr2[b+1] = temp;
+							}
+						}
+                    }
+            System.out.println("Descnending price list: ");
+	            for (a=0; a<price; a++) 
+		                    System.out.println(arr2[a]);
+            
+        }
 // //-------------------------------------------------------------------------------------
 //     //returns the category in alphabetical order (A to Z NOT Z to A para speed code hihi)
 //     public static sortCategory(){
