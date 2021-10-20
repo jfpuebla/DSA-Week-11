@@ -129,17 +129,15 @@ public class ProductOrganizer{
 
                     //if user types other number, the program will restart
                     } else if (something!=0){
-                        System.out.println("noooo");
+
                         continue;
                     }
                 //if user type a string not a number, saves the product name
                 }catch(Exception e){
-                    System.out.println("You are so kapoy");
+
                 }
 
-                
-                System.out.println(productName +"is my name");
-                System.out.println("wowowow");
+            
 
                 // sets to true to avoid rerun if price input is wrong
                 proceed=true;
@@ -148,7 +146,7 @@ public class ProductOrganizer{
             //checking if the price is a number
             try{
                 System.out.print("Input the PRICE of your product: ");
-                price= input.nextFloat();
+                price = input.nextFloat();
             }
             catch(Exception e){
                 System.out.println("\nYour input is wrong please try again\n");
@@ -187,62 +185,10 @@ public class ProductOrganizer{
         }
 
     }
-    // two kinds of list
-    // eachProductList- [productname, price, category]
 
-    // allProductList - [[name1, price1, category1],[name2,price2,c1].....]
 
-    // a list within a list
-    // list[1][1]--python
-    // list.get(1).get(1)-java
 
-// //------------------------------------------------------------------------------------
-//     //PRICE METHODS BELOW
 
-//     //returns the sorted price in ASCENDING order
-        public static void ascPriceSort(int price){
-            int a;
-            int b;
-            int temp;
-            int arr1[] = new int[price];
-            for(a = 0; a<price; a++) 
-				for(a=0; a<(price-1); a++) {
-					for(b=0; b<price-a-1; b++) {	
-						if(arr1[b] > arr1[b+1]) 
-							{
-							temp = arr1[b];
-							arr1[b]= arr1[b+1];
-							arr1[b+1] = temp;
-							}
-						}
-                    }
-                    System.out.println("Ascending price list: ");
-		                for (a=0; a<price; a++) 
-			                System.out.println(arr1[a]);
-            }
-
-//     //returns the sorted price in DESCENDING order
-        public static void desPriceSort(int price){
-            int a;
-            int b;
-            int temp;
-            int arr2[] = new int[price];
-            for(a = 0; a<price; a++) 
-			    for(a=0; a<(price-1); a++) {
-					for(b=0; b<price-a-1; b++) {	
-						if(arr2[b] < arr2[b+1]) 
-						    {
-							temp = arr2[b];
-							arr2[b]= arr2[b+1];
-							arr2[b+1] = temp;
-							}
-						}
-                    }
-            System.out.println("Descnending price list: ");
-	            for (a=0; a<price; a++) 
-		                    System.out.println(arr2[a]);
-            
-        }
 // //-------------------------------------------------------------------------------------
 //     //returns the category in alphabetical order (A to Z NOT Z to A para speed code hihi)
 //     public static sortCategory(){
@@ -360,72 +306,4 @@ public class ProductOrganizer{
             System.out.println("\n --- NAME SORT: DESCENDING --- \n" + allProductList);         
         }}
 
-// //-------------------------------------------------------------------------------------------
-
-// //-----------------------------------------------------------------------------------------
-//     //ALPHABETICAL NAMES METHODS BELOW
-
-//     //ascending of name sort from A to Z
-//     public static void ascNameSort(String allProductList[]){
-//         for (int i = 0 ; i < allProductList.length - 1 ; i++)
-//         {
-//             for (int a = 0 ; a < allProductList.length - 1 - i ; a++)
-//             {
-
-//                 int len1 = allProductList [a].length ();
-//                 int len2 = allProductList [a + 1].length ();
-
-//                 int min = 1; 
-
-//                 if (len1 > len2)
-//                 {
-//                     min = len2;
-//                 }
-//                 else
-//                 {
-//                     min = len1;
-//                 }
-
-//                 for (int b = 0 ; b < min ; b++)
-//                 {
-
-//                     if ((int) allProductList [a].toLowerCase ().charAt (b) > (int) allProductList [a + 1].toLowerCase ().charAt (b))
-//                     {
-//                         String tempName = allProductList [a];
-
-                        
-//                         allProductList [a] = allProductList [a + 1];
-//                         allProductList [a + 1] = tempName;
-
-//                         break;
-//                     }
-
-//                 }
-
-//             }
-//         }
-//     }
-// }
-//     //descending of name sort from Z to A
-// //-------------------------------------------------------------------------------------------
-//     //deletes the product
-//     public static deleteProduct(){
-
-//     }
-//     //adds the product
-//     public static addProduct(){
-
-//     }
-
-//     //prints the needed things here
-//     public static void printSomethingHere(){
-
-//     }
-
-
-
-
-    //algorithms insider here
-    
-
-    
+// //-------------------------------------------------------------------------------------------   
