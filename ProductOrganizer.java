@@ -231,7 +231,7 @@ public class ProductOrganizer{
                         System.out.println(allProductList.get(a));
                     }         
                 } catch (Exception e) {
-                    System.out.println("--- BY CATEGORY -- \n" + cat + ": \n");
+                    System.out.println("--- BY CATEGORY -- \n" + cat + ": \n" + allProductList.get(a));
                 }
             }          
         }
