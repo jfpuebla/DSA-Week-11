@@ -7,6 +7,7 @@ public class mainRun {
         ProductOrganizer.ascNameSortPrint();
         ProductOrganizer.descNameSortPrint();
         ProductOrganizer.sortCategoryPrint();
+        ProductOrganizer.showAllProductPrices();
 
     }
 

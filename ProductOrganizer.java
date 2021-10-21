@@ -10,6 +10,7 @@ public class ProductOrganizer{
     // EACH product with price and category formed inside a list
     static ArrayList<String> eachProductList= new ArrayList<String>();
 
+    static float categoryStart,categoryEnd, ascNameStart, ascNameEnd, desNameStart, desNameEnd, priceStart,priceEnd;
 
     //seperate method for the category
     public static String categoryInput(){
@@ -121,7 +122,7 @@ public class ProductOrganizer{
                 //checks if user types 0
                 try{
                     something=Integer.parseInt(productName);
-                    System.out.println("success for exiting");
+
                     //if user types 0, the program will quit
                     if (something==0){
                         System.out.println("You are now quitting the program");
@@ -190,9 +191,10 @@ public class ProductOrganizer{
 
 
 // //-------------------------------------------------------------------------------------
-//     //returns the category in alphabetical order (A to Z NOT Z to A para speed code hihi)
+//     //returns the category in alphabetical order 
 //     public static sortCategory(){
         public static void sortCategory(int lowerIndex, int higherIndex) {
+            categoryStart=System.nanoTime();
             int i = lowerIndex;
             int j = higherIndex;
             String pivot = allProductList.get(lowerIndex + (higherIndex - lowerIndex) / 2).get(2);
@@ -233,7 +235,9 @@ public class ProductOrganizer{
                 } catch (Exception e) {
                     System.out.println("--- BY CATEGORY -- \n" + cat + ": \n" + allProductList.get(a));
                 }
-            }          
+            }
+            categoryEnd=System.nanoTime();   
+            System.out.printf("The Time Complexity of Category Method is %.5f \n",categoryEnd-categoryStart);       
         }
 
    
@@ -243,6 +247,7 @@ public class ProductOrganizer{
 
 //     //ascending of name sort from A to Z
         public static void ascNameSort(int lowerIndex, int higherIndex) {
+            ascNameStart=System.nanoTime();
             int i = lowerIndex;
             int j = higherIndex;
             String pivot = allProductList.get(lowerIndex + (higherIndex - lowerIndex) / 2).get(0);
@@ -270,12 +275,15 @@ public class ProductOrganizer{
         public static void ascNameSortPrint() {
             int len = allProductList.size();
             ascNameSort(0, len - 1);
-            System.out.println("\n --- NAME SORT: ASCENDING --- \n" +allProductList);         
+            System.out.println("\n --- NAME SORT: ASCENDING --- \n" +allProductList);   
+            ascNameEnd=System.nanoTime();      
+            System.out.printf("The Time Complexity of Ascending Product Name Method is %.5f \n",ascNameEnd-ascNameStart);
         }
 
         //     //descending of name sort from Z to A
 
         public static void descNameSort(int lowerIndex, int higherIndex) {
+            desNameStart=System.nanoTime();
             int i = lowerIndex;
             int j = higherIndex;
             String pivot = allProductList.get(lowerIndex + (higherIndex - lowerIndex) / 2).get(0);
@@ -303,7 +311,52 @@ public class ProductOrganizer{
         public static void descNameSortPrint() {
             int len = allProductList.size();
             descNameSort(0, len - 1);
-            System.out.println("\n --- NAME SORT: DESCENDING --- \n" + allProductList);         
-        }}
+            System.out.println("\n --- NAME SORT: DESCENDING --- \n" + allProductList);      
+            desNameEnd=System.nanoTime();
+            System.out.printf("The Time Complexity of Descending Product Name Method is %.5f \n\n",desNameEnd-desNameStart);
+
+        }
+        //prints the price of each product in a list.
+        public static void showAllProductPrices(){
+            String tempStr;
+            float strToInt;
+            int floatToInt;
+            int tempArr[]=new int[allProductList.size()];
+            int count=0;
+            //putting all prices in a new array
+            for (ArrayList<String> sample:allProductList){
+                tempStr=sample.get(1);
+                strToInt=Float.parseFloat(tempStr);
+                floatToInt=(int)strToInt;
+                tempArr[count]=floatToInt;
+                count+=1;
+            }
+            System.out.println(Arrays.toString(tempArr));
+            
+            priceStart=System.nanoTime();
+            int a;
+            int b;
+            int temp;
+            int price=allProductList.size();
+            for(a = 0; a<price; a++) 
+				for(a=0; a<(price-1); a++) {
+					for(b=0; b<price-a-1; b++) {	
+						if(tempArr[b] > tempArr[b+1]) 
+							{
+							temp = tempArr[b];
+							tempArr[b]= tempArr[b+1];
+							tempArr[b+1] = temp;
+							}
+						}
+                    }
+            System.out.println("Ascending price list of products is: ");
+                for (a=0; a<price; a++) 
+                    System.out.println(tempArr[a]);
+            priceEnd=System.nanoTime();
+            System.out.printf("The Time Complexity of Price Method is %.5f \n\n",priceEnd-priceStart);
+            }
+        }
+    
+    
 
 // //-------------------------------------------------------------------------------------------   
